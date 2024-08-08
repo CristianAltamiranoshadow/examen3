@@ -1,0 +1,70 @@
+{% extends 'album_manager/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Nueva Disquera Musica</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://www.nus.agency/wp-content/uploads/elementor/thumbs/musica-arte-scaled-q3s9zjmsgnvmn73optv6vm808qaju2jakn089uojbg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            color: white; /* To ensure text is readable on dark background */
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent background */
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            margin: 1rem;
+            padding: 0.5rem 1rem;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Link Styles */
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Catálogo de Discos de Música</h1>
+    </header>
+    <h1>La Nueva Disquera Musica</h1>
+    <a href="{% url 'artist_list' %}" class="btn">Lista de Artistas</a>
+    <a href="{% url 'album_list' %}" class="btn">Lista de Albums</a>
+</body>
+</html>
+{% endblock %}

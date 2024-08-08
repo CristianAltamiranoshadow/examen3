@@ -1,0 +1,116 @@
+{% extends 'album_manager/base.html' %}
+
+{% block title %}Lista de Albums{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Albums</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://neurosciencenews.com/files/2023/08/music-mind-neurosicnes.jpg') no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            color: white; /* To ensure text is readable on dark background */
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent background */
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            margin: 1rem;
+            padding: 0.5rem 1rem;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+        }
+
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        /* List Styles */
+        .list-group {
+            list-style: none;
+            padding: 0;
+            margin: 1rem auto;
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for better readability */
+            border-radius: 5px;
+        }
+
+        .list-group-item {
+            background-color: transparent;
+            border: 1px solid #ccc;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-group-item a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .list-group-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Catálogo de Discos de Música</h1>
+    </header>
+    <h1>Lista de Albums</h1>
+    <a href="{% url 'album_create' %}" class="btn btn-success">Crear nuevo Album</a>
+    <ul class="list-group">
+        {% for album in albums %}
+        <li class="list-group-item">
+            <a href="{% url 'album_detail' album.pk %}">{{ album.title }}</a>
+            <div>
+                <a href="{% url 'album_update' album.pk %}" class="btn btn-secondary btn-sm">Editar</a>
+                <a href="{% url 'album_delete' album.pk %}" class="btn btn-danger btn-sm">Borrar</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+{% endblock %}
